@@ -1,4 +1,3 @@
--- Preview: https://cdn.discordapp.com/attachments/796378086446333984/818089455897542687/unknown.png
 -- Made by Adrian
 local Settings = {
     Box_Color = Color3.fromRGB(224, 176, 255),
@@ -7,7 +6,7 @@ local Settings = {
     Box_Thickness = 1,
     Tracer_Origin = "Middle", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
-    Tracers = false
+    Tracers = true
 }
 local Team_Check = {
     TeamCheck = false, -- if TeamColor is on this won't matter...
