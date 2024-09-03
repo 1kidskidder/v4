@@ -11,8 +11,8 @@ local Settings = {
 }
 local Team_Check = {
     TeamCheck = false, -- if TeamColor is on this won't matter...
-    Green = Color3.fromRGB(48, 25, 52),
-    Red = Color3.fromRGB(48, 25, 52)
+    Green = Color3.fromRGB(224, 176, 255),
+    Red = Color3.fromRGB(224, 176, 255)
 }
 local TeamColor = false
 
@@ -59,7 +59,7 @@ local function ToColor3(col) --Function to convert, just cuz c;
     return Color3.new(r,g,b); --Color3 datatype, made of the RGB inputs
 end
 
-local black = Color3.fromRGB(48, 25, 52)
+local black = Color3.fromRGB(224, 176, 255)
 local function ESP(plr)
     local library = {
         --//Tracer and Black Tracer(black border)
@@ -131,8 +131,8 @@ local function ESP(plr)
                     library.healthbar.From = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y + DistanceY*2)
                     library.healthbar.To = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y - DistanceY*2)
 
-                    local green = Color3.fromRGB(0, 255, 0)
-                    local red = Color3.fromRGB(255, 0, 0)
+                    local green = Color3.fromRGB(224, 176, 255)
+                    local red = Color3.fromRGB(224, 176, 255)
 
                     library.greenhealth.Color = red:lerp(green, plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth);
 
