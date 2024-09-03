@@ -1,7 +1,7 @@
-local FillColor = Color3.fromRGB(224, 176, 255)
+local FillColor = Color3.fromRGB(255, 255, 255)
 local DepthMode = "AlwaysOnTop"
 local FillTransparency = 0.3
-local OutlineColor = Color3.fromRGB(207, 159, 255)
+local OutlineColor = Color3.fromRGB(255, 245, 238)
 local OutlineTransparency = 0
 
 local CoreGui = game:FindService("CoreGui")
