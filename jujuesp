@@ -3,9 +3,9 @@
 local Settings = {
     Box_Color = Color3.fromRGB(224, 176, 255),
     Tracer_Color = Color3.fromRGB(224, 176, 255),
-    Tracer_Thickness = 3,
-    Box_Thickness = 3,
-    Tracer_Origin = "Top", -- Middle or Bottom if FollowMouse is on this won't matter...
+    Tracer_Thickness = 2,
+    Box_Thickness = 2,
+    Tracer_Origin = "Middle", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
     Tracers = true
 }
@@ -23,7 +23,7 @@ local mouse = player:GetMouse()
 
 local function NewQuad(thickness, color)
     local quad = Drawing.new("Quad")
-    quad.Visible = false
+    quad.Visible = true
     quad.PointA = Vector2.new(0,0)
     quad.PointB = Vector2.new(0,0)
     quad.PointC = Vector2.new(0,0)
@@ -37,7 +37,7 @@ end
 
 local function NewLine(thickness, color)
     local line = Drawing.new("Line")
-    line.Visible = false
+    line.Visible = true
     line.From = Vector2.new(0, 0)
     line.To = Vector2.new(0, 0)
     line.Color = color 
