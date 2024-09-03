@@ -1,10 +1,10 @@
 -- Preview: https://cdn.discordapp.com/attachments/796378086446333984/818089455897542687/unknown.png
 -- Made by Adrian
 local Settings = {
-    Box_Color = Color3.fromRGB(204, 204, 255),
+    Box_Color = Color3.fromRGB(48, 25, 52),
     Tracer_Color = Color3.fromRGB(189, 181, 213),
-    Tracer_Thickness = 4,
-    Box_Thickness = 4,
+    Tracer_Thickness = 0.5,
+    Box_Thickness = 0.5,
     Tracer_Origin = "Top", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
     Tracers = true
