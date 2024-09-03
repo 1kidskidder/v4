@@ -21,7 +21,7 @@ getgenv().Silent = {
             Thickness = 2,
             NumSides = 1000,
             Radius = 110, --> Change Circle Size Here
-            Filled = false,
+            Filled = true,
         },
     },
 }
