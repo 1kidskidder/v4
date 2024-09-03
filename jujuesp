@@ -131,8 +131,8 @@ local function ESP(plr)
                     library.healthbar.From = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y + DistanceY*2)
                     library.healthbar.To = Vector2.new(HumPos.X - DistanceY - 4, HumPos.Y - DistanceY*2)
 
-                    local green = Color3.fromRGB(0, 255, 0)
-                    local red = Color3.fromRGB(255, 0, 0)
+                    local green = Color3.fromRGB(224, 176, 255)
+                    local red = Color3.fromRGB(224, 176, 255)
 
                     library.greenhealth.Color = red:lerp(green, plr.Character.Humanoid.Health/plr.Character.Humanoid.MaxHealth);
 
