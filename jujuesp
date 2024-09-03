@@ -3,8 +3,8 @@
 local Settings = {
     Box_Color = Color3.fromRGB(189, 181, 213),
     Tracer_Color = Color3.fromRGB(189, 181, 213),
-    Tracer_Thickness = 3,
-    Box_Thickness = 3,
+    Tracer_Thickness = 4,
+    Box_Thickness = 4,
     Tracer_Origin = "Top", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
     Tracers = true
@@ -14,7 +14,7 @@ local Team_Check = {
     Green = Color3.fromRGB(0, 255, 0),
     Red = Color3.fromRGB(255, 0, 0)
 }
-local TeamColor = false
+local TeamColor = true
 
 --// SEPARATION
 local player = game:GetService("Players").LocalPlayer
