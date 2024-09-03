@@ -1,7 +1,7 @@
 -- Preview: https://cdn.discordapp.com/attachments/796378086446333984/818089455897542687/unknown.png
 -- Made by Adrian
 local Settings = {
-    Box_Color = Color3.fromRGB(189, 181, 213),
+    Box_Color = Color3.fromRGB(204, 204, 255),
     Tracer_Color = Color3.fromRGB(189, 181, 213),
     Tracer_Thickness = 4,
     Box_Thickness = 4,
@@ -11,10 +11,10 @@ local Settings = {
 }
 local Team_Check = {
     TeamCheck = false, -- if TeamColor is on this won't matter...
-    Green = Color3.fromRGB(0, 255, 0),
-    Red = Color3.fromRGB(255, 0, 0)
+    Green = Color3.fromRGB(224, 176, 255),
+    Red = Color3.fromRGB(224, 176, 255)
 }
-local TeamColor = true
+local TeamColor = false
 
 --// SEPARATION
 local player = game:GetService("Players").LocalPlayer
@@ -59,7 +59,7 @@ local function ToColor3(col) --Function to convert, just cuz c;
     return Color3.new(r,g,b); --Color3 datatype, made of the RGB inputs
 end
 
-local black = Color3.fromRGB(0, 0 ,0)
+local black = Color3.fromRGB(93, 63, 211)
 local function ESP(plr)
     local library = {
         --//Tracer and Black Tracer(black border)
