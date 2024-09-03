@@ -3,9 +3,9 @@
 local Settings = {
     Box_Color = Color3.fromRGB(48, 25, 52),
     Tracer_Color = Color3.fromRGB(189, 181, 213),
-    Tracer_Thickness = 0.5,
-    Box_Thickness = 0.5,
-    Tracer_Origin = "Top", -- Middle or Bottom if FollowMouse is on this won't matter...
+    Tracer_Thickness = 5,
+    Box_Thickness = 5,
+    Tracer_Origin = "Middle", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
     Tracers = true
 }
@@ -42,7 +42,7 @@ local function NewLine(thickness, color)
     line.To = Vector2.new(0, 0)
     line.Color = color 
     line.Thickness = thickness
-    line.Transparency = 1
+    line.Transparency = 9
     return line
 end
 
