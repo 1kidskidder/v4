@@ -1,6 +1,6 @@
-local FillColor = Color3.fromRGB(72, 50, 72)
+local FillColor = Color3.fromRGB(224, 176, 255)
 local DepthMode = "AlwaysOnTop"
-local FillTransparency = 0
+local FillTransparency = 0.3
 local OutlineColor = Color3.fromRGB(207, 159, 255)
 local OutlineTransparency = 0
 
