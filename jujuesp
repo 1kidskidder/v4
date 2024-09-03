@@ -2,8 +2,8 @@
 local Settings = {
     Box_Color = Color3.fromRGB(224, 176, 255),
     Tracer_Color = Color3.fromRGB(224, 176, 255),
-    Tracer_Thickness = 1,
-    Box_Thickness = 1,
+    Tracer_Thickness = 0.5,
+    Box_Thickness = 0.5,
     Tracer_Origin = "Middle", -- Middle or Bottom if FollowMouse is on this won't matter...
     Tracer_FollowMouse = false,
     Tracers = true
@@ -36,7 +36,7 @@ end
 
 local function NewLine(thickness, color)
     local line = Drawing.new("Line")
-    line.Visible = false
+    line.Visible = true
     line.From = Vector2.new(0, 0)
     line.To = Vector2.new(0, 0)
     line.Color = color 
