@@ -23,7 +23,7 @@ local mouse = player:GetMouse()
 
 local function NewQuad(thickness, color)
     local quad = Drawing.new("Quad")
-    quad.Visible = true
+    quad.Visible = false
     quad.PointA = Vector2.new(0,0)
     quad.PointB = Vector2.new(0,0)
     quad.PointC = Vector2.new(0,0)
