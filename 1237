@@ -11,7 +11,7 @@ getgenv().Silent = {
         Prediction = {
             Enabled = true,
             Horizontal = 0.1344, --> X, Z
-            Vertical = 0.1344, --> Y
+            Vertical = 0.068, --> Y
         },
        
         Circle = {
