@@ -17,10 +17,10 @@ getgenv().Silent = {
         Circle = {
             Visible = true,
             Color = Color3.fromRGB(255, 255, 255),
-            Transparency = 0.2,
+            Transparency = 2,
             Thickness = 0.5,
             NumSides = 1000,
-            Radius = 110, --> Change Circle Size Here
+            Radius = 160, --> Change Circle Size Here
             Filled = false,
         },
     },
