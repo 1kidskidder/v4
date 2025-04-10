@@ -9,17 +9,21 @@
       margin: 0;
       overflow: hidden;
     }
+
+    /* FOV Circle Styling */
     #fovCircle {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
-      border: 3px solid blue;  /* Thinner border */
+      width: 250px;
+      height: 250px;
+      border: 3px solid blue; /* Thin outline for the FOV circle */
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
     }
+
+    /* Watermark Styling */
     #watermark {
       position: absolute;
       top: 0;
@@ -29,24 +33,32 @@
       padding: 10px 20px;
       border-radius: 5px;
       color: white;
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      font-size: 20px;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 18px;
       text-shadow: 2px 2px 5px black;
       z-index: 10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: 100%;
+      box-sizing: border-box;
+      border: 2px solid white;  /* Rectangle background border */
     }
+
+    /* Ping display inside the watermark */
     #ping {
-      font-size: 18px;
-      font-weight: bold;
+      font-size: 16px;
+      font-weight: normal;
     }
-    .espBox {
-      position: absolute;
-      z-index: 5;
-    }
+
+    /* ESP Text for emoji */
     .espText {
       position: absolute;
-      z-index: 6;
+      z-index: 5;
       color: red;
-      font-size: 20px;
+      font-size: 30px;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -57,67 +69,35 @@
   </div>
 
   <script>
-    const socket = new WebSocket('ws://localhost:8080');
+    const socket = new WebSocket('ws://localhost:8080');  // Connect to WebSocket server
 
     socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
-      drawESP(data.x, data.y, data.isEnemy);
+      drawESP(data.x, data.y, data.isEnemy);  // Draw ESP based on data received from Frida
     };
 
     function drawESP(x, y, isEnemy) {
-      // Add the "👻" emoji above the player’s head
+      // Add the "👻" emoji above the player’s head (both enemy and your own)
       const espText = document.createElement('div');
       espText.classList.add('espText');
       espText.innerText = '👻';  // Emoji for ESP
-      espText.style.left = `${x - 15}px`;  // Center emoji
-      espText.style.top = `${y - 50}px`;  // Position it above the player’s head
+      espText.style.left = `${x - 15}px`;  // Center emoji horizontally
+      espText.style.top = `${y - 50}px`;  // Position it above the player's head
       document.body.appendChild(espText);
-
-      // If the player is an enemy, add a box (optional)
-      if (isEnemy) {
-        const espBox = document.createElement('div');
-        espBox.classList.add('espBox');
-        espBox.style.width = '50px';
-        espBox.style.height = '50px';
-        espBox.style.left = `${x - 25}px`;  // Center the box on the player
-        espBox.style.top = `${y - 25}px`;
-        espBox.style.border = '2px solid red'; // Box style for enemies
-        document.body.appendChild(espBox);
-      }
 
       // Optional: Remove ESP after a delay
       setTimeout(() => {
         espText.remove();
-        if (isEnemy) {
-          espBox.remove();
-        }
       }, 1000);
-    }
-
-    // Function to simulate Frida reading player position and sending enemy flag
-    function simulateFridaHook() {
-      const playerCoordinates = getPlayerCoordinates();
-      const isEnemy = Math.random() < 0.5;  // Randomize enemy or player
-      drawESP(playerCoordinates.x, playerCoordinates.y, isEnemy);
-    }
-
-    function getPlayerCoordinates() {
-      return {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight
-      };
     }
 
     // FOV Circle Logic (already implemented)
     function drawFovCircle() {
       const fovCircle = document.getElementById('fovCircle');
-      const circleSize = 300;  // Circle radius in pixels
+      const circleSize = 250;  // Circle radius in pixels (made thinner)
       fovCircle.style.width = `${circleSize}px`;
       fovCircle.style.height = `${circleSize}px`;
     }
-
-    // Call the function to simulate Frida reading and drawing ESP
-    setInterval(simulateFridaHook, 100); // Call every 100ms for continuous updates
 
     // Call the function to draw FOV circle
     drawFovCircle();
