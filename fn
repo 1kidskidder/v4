@@ -15,61 +15,111 @@
       left: 50%;
       width: 300px;
       height: 300px;
-      border: 5px solid blue;
+      border: 3px solid blue;  /* Thinner border */
       border-radius: 50%;
       pointer-events: none;
       transform: translate(-50%, -50%);
     }
     #watermark {
       position: absolute;
-      top: 10px;
-      left: 10px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 5px;
       color: white;
-      font-family: Arial, sans-serif;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
       font-size: 20px;
+      text-shadow: 2px 2px 5px black;
       z-index: 10;
+    }
+    #ping {
+      font-size: 18px;
+      font-weight: bold;
     }
     .espBox {
       position: absolute;
-      border: 2px solid red;
-      border-radius: 5px;
       z-index: 5;
+    }
+    .espText {
+      position: absolute;
+      z-index: 6;
+      color: red;
+      font-size: 20px;
     }
   </style>
 </head>
 <body>
   <div id="fovCircle"></div>
-  <div id="watermark">Juice.cc made by Adrian</div>
+  <div id="watermark">
+    Juice.cc made by Adrian <span id="ping">Ping: 60</span>
+  </div>
 
   <script>
     const socket = new WebSocket('ws://localhost:8080');
 
     socket.onmessage = function(event) {
       const data = JSON.parse(event.data);
-      drawESP(data.x, data.y);
+      drawESP(data.x, data.y, data.isEnemy);
     };
 
-    function drawESP(x, y) {
-      const espBox = document.createElement('div');
-      espBox.classList.add('espBox');
-      espBox.style.width = '50px';
-      espBox.style.height = '50px';
-      espBox.style.left = `${x - 25}px`;
-      espBox.style.top = `${y - 25}px`;
-      document.body.appendChild(espBox);
+    function drawESP(x, y, isEnemy) {
+      // Add the "👻" emoji above the player’s head
+      const espText = document.createElement('div');
+      espText.classList.add('espText');
+      espText.innerText = '👻';  // Emoji for ESP
+      espText.style.left = `${x - 15}px`;  // Center emoji
+      espText.style.top = `${y - 50}px`;  // Position it above the player’s head
+      document.body.appendChild(espText);
 
+      // If the player is an enemy, add a box (optional)
+      if (isEnemy) {
+        const espBox = document.createElement('div');
+        espBox.classList.add('espBox');
+        espBox.style.width = '50px';
+        espBox.style.height = '50px';
+        espBox.style.left = `${x - 25}px`;  // Center the box on the player
+        espBox.style.top = `${y - 25}px`;
+        espBox.style.border = '2px solid red'; // Box style for enemies
+        document.body.appendChild(espBox);
+      }
+
+      // Optional: Remove ESP after a delay
       setTimeout(() => {
-        espBox.remove();
+        espText.remove();
+        if (isEnemy) {
+          espBox.remove();
+        }
       }, 1000);
     }
 
+    // Function to simulate Frida reading player position and sending enemy flag
+    function simulateFridaHook() {
+      const playerCoordinates = getPlayerCoordinates();
+      const isEnemy = Math.random() < 0.5;  // Randomize enemy or player
+      drawESP(playerCoordinates.x, playerCoordinates.y, isEnemy);
+    }
+
+    function getPlayerCoordinates() {
+      return {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight
+      };
+    }
+
+    // FOV Circle Logic (already implemented)
     function drawFovCircle() {
       const fovCircle = document.getElementById('fovCircle');
-      const circleSize = 300;  
+      const circleSize = 300;  // Circle radius in pixels
       fovCircle.style.width = `${circleSize}px`;
       fovCircle.style.height = `${circleSize}px`;
     }
 
+    // Call the function to simulate Frida reading and drawing ESP
+    setInterval(simulateFridaHook, 100); // Call every 100ms for continuous updates
+
+    // Call the function to draw FOV circle
     drawFovCircle();
   </script>
 </body>
