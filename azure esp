@@ -45,8 +45,8 @@ local ESP_SETTINGS = {
     BoxType = "Normal",
     ShowName = true,
     ShowHealth = true,
-    ShowDistance = true,
-    ShowTracer = true,
+    ShowDistance = false,
+    ShowTracer = false,
     TracerThickness = 1,
     TracerPosition = "Bottom",
 }
@@ -73,7 +73,7 @@ local function createEsp(player)
         }),
         box = create("Square", {
             Color = ESP_SETTINGS.BoxColor,
-            Thickness = 1,
+            Thickness = 0.5,
             Filled = false
         }),
         filledBox = create("Square", {
@@ -86,7 +86,7 @@ local function createEsp(player)
             Color = ESP_SETTINGS.NameColor,
             Outline = true,
             Center = true,
-            Size = 4
+            Size = 8
         }),
         healthOutline = create("Line", {
             Thickness = 3,
